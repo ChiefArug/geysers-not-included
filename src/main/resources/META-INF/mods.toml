@@ -1,0 +1,45 @@
+modLoader="javafml" #mandatory
+loaderVersion="[40,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license="MIT"
+# A URL to refer people to when problems occur with this mod
+issueTrackerURL="https://github.com/ChiefArug/geysers-not-included/issues" #optional
+# A list of mods - how many allowed here is determined by the individual mod loader
+[[mods]] #mandatory
+# The modid of the mod
+modId="gni" #mandatory
+# The version number of the mod - there's a few well known ${} variables useable here or just hardcode it
+# ${file.jarVersion} will substitute the value of the Implementation-Version as read from the mod's JAR file metadata
+# see the associated build.gradle script for how to populate this completely automatically during a build
+version="${file.jarVersion}" #mandatory
+displayName="Geysers Not Included" #mandatory
+displayURL="https://www.curseforge.com/minecraft/mc-mods/geysers-not-included" #optional
+
+logoFile="pack.png" #optional
+# A text field displayed in the mod UI
+credits="Thanks to xbxbxb123 for the idea, and Klei Entertainment for originally making Oxygen Not Included!" #optional
+# A text field displayed in the mod UI
+authors="ChiefArug" #optional
+# The description text for the mod (multi line!) (#mandatory)
+description='''
+Oxygen Not Included inspired geysers for renewable resources!
+'''
+# A dependency - use the . to indicate dependency for a specific modid. Dependencies are optional.
+[[dependencies.gni]] #optional
+    # the modid of the dependency
+    modId="forge" #mandatory
+    # Does this dependency have to exist - if not, ordering below must be specified
+    mandatory=true #mandatory
+    # The version range of the dependency
+    versionRange="[40,)" #mandatory
+    # An ordering relationship for the dependency - BEFORE or AFTER required if the relationship is not mandatory
+    ordering="NONE"
+    # Side this dependency is applied on - BOTH, CLIENT or SERVER
+    side="BOTH"
+# Here's another dependency
+[[dependencies.gni]]
+    modId="minecraft"
+    mandatory=true
+# This version range declares a minimum of the current minecraft version up to but not including the next major version
+    versionRange="[1.18.2,1.19)"
+    ordering="NONE"
+    side="BOTH"
