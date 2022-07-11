@@ -8,11 +8,11 @@ import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
 // The value here should match an entry in the META-INF/mods.toml file
-@Mod("examplemod")
+@Mod("gni")
 public class GeysersNotIncluded
 {
     // Directly reference a slf4j logger
-    private static final Logger LOGGER = LogUtils.getLogger();
+    public static final Logger LOGGER = LogUtils.getLogger();
     public static final String MODID = "gni";
 
     public GeysersNotIncluded()
@@ -22,6 +22,8 @@ public class GeysersNotIncluded
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
+
+        Registry.init();
     }
 
     private void setup(final FMLCommonSetupEvent event)

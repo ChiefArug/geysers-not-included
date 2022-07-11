@@ -2,12 +2,14 @@ package chiefarug.mods.geysers_not_included;
 
 import chiefarug.mods.geysers_not_included.blocks.GeyserBlock;
 import chiefarug.mods.geysers_not_included.blocks.GeyserBlockEntity;
+import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
@@ -28,6 +30,7 @@ public class Registry {
 	};
 
 	public static final BlockBehaviour.Properties BLOCK_PROPERTIES = BlockBehaviour.Properties.of(Material.STONE);
+	public static final BooleanProperty ACTIVE = BooleanProperty.create("active");
 	public static final Item.Properties ITEM_PROPERTIES = new Item.Properties().tab(C_TAB);
 
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
@@ -35,14 +38,14 @@ public class Registry {
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MODID);
 
 
-	public static final RegistryObject<GeyserBlock> GEYSER_BLOCK = BLOCKS.register("powergen", () -> new GeyserBlock(BLOCK_PROPERTIES));
-	public static final RegistryObject<BlockEntityType<GeyserBlockEntity>> GEYSER_BLOCK_ENTITY = BLOCK_ENTITIES.register("powergen", BlockEntityType.Builder.of(GeyserBlockEntity::new, GEYSER_BLOCK.get()));
-	public static final RegistryObject<Item> GEYSER_BLOCK_ITEM = ITEMS.register("geyser", () -> new Item(ITEM_PROPERTIES));
+	public static final RegistryObject<GeyserBlock> GEYSER_BLOCK = BLOCKS.register("geyser", () -> new GeyserBlock(BLOCK_PROPERTIES));
+	public static final RegistryObject<BlockEntityType<GeyserBlockEntity>> GEYSER_BLOCK_ENTITY = BLOCK_ENTITIES.register("geyser", () -> BlockEntityType.Builder.of(GeyserBlockEntity::new, GEYSER_BLOCK.get()).build(null));
+	public static final RegistryObject<Item> GEYSER_BLOCK_ITEM = ITEMS.register("geyser", () -> new BlockItem(GEYSER_BLOCK.get(), ITEM_PROPERTIES));
 
 	public static void init() {
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		BLOCKS.register(bus);
 		ITEMS.register(bus);
+		BLOCK_ENTITIES.register(bus);
 	}
-
 }
