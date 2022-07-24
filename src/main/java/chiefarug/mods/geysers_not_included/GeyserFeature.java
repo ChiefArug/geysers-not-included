@@ -40,7 +40,7 @@ public class GeyserFeature extends StructureFeature<JigsawConfiguration> {
 			currentY++;
 		}
 
-		BlockPos genPos = chunkPos.getBlockAt(chunkPos.getMiddleBlockX(), currentY, chunkPos.getMiddleBlockZ());
+		BlockPos genPos = chunkPos.getMiddleBlockPosition(currentY);
 		Optional<PieceGenerator<JigsawConfiguration>> structurePiecesGenerator = JigsawPlacement.addPieces(
 				context,
 				PoolElementStructurePiece::new,
@@ -65,6 +65,6 @@ public class GeyserFeature extends StructureFeature<JigsawConfiguration> {
 
 	@Override
 	public GenerationStep.Decoration step() {
-		return GenerationStep.Decoration.SURFACE_STRUCTURES;
+		return GenerationStep.Decoration.UNDERGROUND_STRUCTURES;
 	}
 }
