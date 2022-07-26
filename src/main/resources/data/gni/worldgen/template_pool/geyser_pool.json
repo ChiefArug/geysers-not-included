@@ -18,7 +18,7 @@
         // The Identifier of the nbt file itself of the structure piece.
         "location": "gni:geyser_small",
         // Processor JSON files, for if you want to randomize any of it. For now, I won't
-        "processors": "minecraft:empty",
+        "processors": "gni:lava",
         // If set to 'terrain_matching', the structure will be deformed to fit the change in land.
         "projection": "rigid",
         // Don't change
@@ -29,7 +29,7 @@
       "weight": 2,
       "element": {
         "location": "gni:geyser_large",
-        "processors": "minecraft:empty",
+        "processors": "gni:water_geyser_processor",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }
@@ -38,7 +38,7 @@
       "weight": 3,
       "element": {
         "location": "gni:geyser_medium",
-        "processors": "minecraft:empty",
+        "processors": "gni:water_geyser_processor",
         "projection": "rigid",
         "element_type": "minecraft:single_pool_element"
       }

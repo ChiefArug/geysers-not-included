@@ -21,22 +21,22 @@ public class GeyserBlockEntity extends BlockEntity {
 
 	// Game time that the last cycle change happened (it activated/deactivated)
 	private long lastCycleSwap;
-	private static final String lastCycleSwapSerializedName = "Swap";
+	public static final String lastCycleSwapSerializedName = "Swap";
 	// Length of the inactive period, a delay between active periods where it does nothing
 	private int inactiveCycle = 1200;
-	private static final String inactiveCycleSerializedName = "Inactive";
+	public static final String inactiveCycleSerializedName = "Inactive";
 	// Length of the active period, where every emitCycle ticks it will try to emit fluid
 	private int activeCycle = 600;
-	private static final String activeCycleSerializedName = "Active";
+	public static final String activeCycleSerializedName = "Active";
 	// Length of the emit-cycle, every this ticks it will try to emit fluid
 	private int emitCycle = 200;
-	private static final String emitCycleSerializedName = "Emit";
+	public static final String emitCycleSerializedName = "Emit";
 	// Last time it successfully emitted fluid
 	private long lastEmitted;
-	private static final String lastEmittedSerializedName = "LastEmitted";
+	public static final String lastEmittedSerializedName = "LastEmitted";
 	// Type, based on a TODO datapack registry
 	private ResourceLocation type;
-	private static final String typeSerializedName = "Type";
+	public static final String typeSerializedName = "Type";
 
 	public void tickServer() {
 		assert level != null;
@@ -85,6 +85,7 @@ public class GeyserBlockEntity extends BlockEntity {
 		tag.putInt(activeCycleSerializedName, activeCycle);
 		tag.putInt(emitCycleSerializedName, emitCycle);
 		tag.putLong(lastEmittedSerializedName, lastEmitted);
+		tag.putString(typeSerializedName, type.toString());
 	}
 
 	@Override
@@ -104,6 +105,10 @@ public class GeyserBlockEntity extends BlockEntity {
 		}
 		if (tag.contains(lastEmittedSerializedName)) {
 			lastEmitted = tag.getLong(lastEmittedSerializedName);
+		}
+		if(tag.contains(typeSerializedName)) {
+			// Make sure to look in the todo registry to see if its a valid type
+			type = new ResourceLocation(tag.getString(typeSerializedName));
 		}
 	}
 

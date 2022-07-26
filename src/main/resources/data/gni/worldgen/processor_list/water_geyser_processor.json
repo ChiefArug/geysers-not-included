@@ -1,0 +1,6 @@
+{
+  "type": "gni:geyser_type_set",
+  "types": [
+    "minecraft:water"
+  ]
+}

@@ -41,9 +41,10 @@ public class GNIRegistry {
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 	public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, MODID);
 	public static final DeferredRegister<StructureFeature<?>> STRUCTURE_FEATURES = DeferredRegister.create(new ResourceLocation("minecraft:worldgen/structure_feature"), MODID);
+	public static final DeferredRegister<StructureProcessorType<?>> STRUCTURE_PROCESSORS = DeferredRegister.create(new ResourceLocation("minecraft:worldgen/structure_processor"), MODID);
 
 	public static final RegistryObject<StructureFeature<JigsawConfiguration>> GEYSER = STRUCTURE_FEATURES.register("geyser", GeyserFeature::new);
-
+	public static final RegistryObject<StructureProcessorType<GeyserProcessor>> GEYSER_PROCESSOR = STRUCTURE_PROCESSORS.register("geyser_type_set", () -> GeyserProcessor.TYPE);
 	public static final RegistryObject<GeyserBlock> GEYSER_BLOCK = BLOCKS.register("geyser", () -> new GeyserBlock(BLOCK_PROPERTIES));
 	public static final RegistryObject<BlockEntityType<GeyserBlockEntity>> GEYSER_BLOCK_ENTITY = BLOCK_ENTITIES.register("geyser", () -> BlockEntityType.Builder.of(GeyserBlockEntity::new, GEYSER_BLOCK.get()).build(null));
 	public static final RegistryObject<Item> GEYSER_BLOCK_ITEM = ITEMS.register("geyser", () -> new BlockItem(GEYSER_BLOCK.get(), ITEM_PROPERTIES));
