@@ -23,7 +23,7 @@ public class GeysersNotIncluded
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);
 
-        Registry.init();
+        GNIRegistry.init();
     }
 
     private void setup(final FMLCommonSetupEvent event)

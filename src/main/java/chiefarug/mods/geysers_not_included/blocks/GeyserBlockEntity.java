@@ -1,6 +1,6 @@
 package chiefarug.mods.geysers_not_included.blocks;
 
-import chiefarug.mods.geysers_not_included.Registry;
+import chiefarug.mods.geysers_not_included.GNIRegistry;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -11,7 +11,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 
-import static chiefarug.mods.geysers_not_included.Registry.GEYSER_BLOCK_ENTITY;
+import static chiefarug.mods.geysers_not_included.GNIRegistry.GEYSER_BLOCK_ENTITY;
 
 public class GeyserBlockEntity extends BlockEntity {
 
@@ -62,7 +62,7 @@ public class GeyserBlockEntity extends BlockEntity {
 	}
 
 	private void changeActive(boolean b) {
-		level.setBlock(getBlockPos(), getBlockState().setValue(Registry.ACTIVE, b), 3);
+		level.setBlock(getBlockPos(), getBlockState().setValue(GNIRegistry.ACTIVE, b), 3);
 		lastCycleSwap = level.getGameTime();
 	}
 
@@ -108,6 +108,6 @@ public class GeyserBlockEntity extends BlockEntity {
 	}
 
 	private boolean isActive() {
-		return getBlockState().getValue(Registry.ACTIVE);
+		return getBlockState().getValue(GNIRegistry.ACTIVE);
 	}
 }

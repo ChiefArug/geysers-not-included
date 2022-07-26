@@ -2,6 +2,7 @@ package chiefarug.mods.geysers_not_included;
 
 import chiefarug.mods.geysers_not_included.blocks.GeyserBlock;
 import chiefarug.mods.geysers_not_included.blocks.GeyserBlockEntity;
+import chiefarug.mods.geysers_not_included.world.GeyserFeature;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -21,11 +22,9 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import org.jetbrains.annotations.NotNull;
 
-import javax.swing.*;
-
 import static chiefarug.mods.geysers_not_included.GeysersNotIncluded.MODID;
 
-public class Registry {
+public class GNIRegistry {
 
 	public static final CreativeModeTab C_TAB = new CreativeModeTab("Geysers Not Included") {
 		@Override
